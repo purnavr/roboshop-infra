@@ -1,11 +1,11 @@
 variable "instances" {
   default = {
     catalogue = {
-      name = "frontend"
+      name = "catalogue"
       type = "t2.micro"
     }
     user = {
-      name = "useer"
+      name = "user"
       type = "t2.micro"
     }
   }

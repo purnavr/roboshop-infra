@@ -1,2 +1,3 @@
 apply:
-	terraform init
+	terraform ini
+	terraform apply-auto-approve

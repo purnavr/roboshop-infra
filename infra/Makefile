@@ -1,3 +1,3 @@
 apply:
-	terraorm init
+	terraform init
 	terraform apply-auto-approve

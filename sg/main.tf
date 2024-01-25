@@ -1,4 +1,4 @@
-resource "aws_security_group" "allow_tls" {
+resource "aws_security_group" "allow_t" {
   name = "allow_tls"
   description = "Allow TLS inbound traffic"
 
@@ -18,10 +18,10 @@ resource "aws_security_group" "allow_tls" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "allow_t"
   }
 }
 
 output "sg_id" {
-  value = aws_security_group.allow_tls.id
+  value = aws_security_group.allow_t.id
 }

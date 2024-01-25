@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_t" {
-  name = "allow_tls"
+  name = "allow_t"
   description = "Allow TLS inbound traffic"
 
   ingress {

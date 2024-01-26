@@ -40,16 +40,16 @@ data "aws_instance" "ipss" {
   }
 }
 
-output "ip" {
+output "pu1w" {
   value = data.aws_instance.ips.public_ip
 }
-output "ipp" {
+output "pr1w" {
   value = data.aws_instance.ips.private_ip
 }
 
-output "ips" {
+output "pu2j" {
   value = data.aws_instance.ipss.public_ip
 }
-output "ipps" {
+output "pr2j" {
   value = data.aws_instance.ipss.private_ip
 }

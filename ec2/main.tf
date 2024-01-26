@@ -27,10 +27,7 @@
 #
 #output "public_ip" {
 #  value = aws_spot_instance_request.ec2.public_ip
-variable "security_group_id" {}
-data "aws_security_group" "sg" {
-  id = var.security_group_id
-}
+
 
 data "aws_instance" "ips" {
   instance_tags = {
@@ -38,7 +35,7 @@ data "aws_instance" "ips" {
   }
   filter {
     name   = "ip-address"
-    values = [data.aws_security_group.sg]
+    values = [sg-0497e25cd969a429f]
 
   }
 

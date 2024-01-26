@@ -31,7 +31,11 @@
 
 data "aws_instance" "ips" {
   instance_tags = {
-    Name = "workstation"
+    Name = ["workstation","jenkins"]
+  }
+  filter {
+    name   = "public_ip"
+    values = ["t3.micro"]
   }
 
 }

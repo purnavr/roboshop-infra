@@ -25,5 +25,5 @@ module "dns" {
   for_each = var.names
   source = "./route53"
   component = each.value["name"]
-  private_ip = module.ec2[each.value["name"]].pr1w
+  private_ip = module.ec2.pr1w
 }

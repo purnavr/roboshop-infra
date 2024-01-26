@@ -33,13 +33,12 @@ data "aws_instance" "ips" {
   instance_tags = {
     Name = "workstation"
   }
-#  filter {
-#    name   = "ip-address"
-#    values = ["t3.micro"]
-#  }
-
 }
-
-#output "ip" {
-#  value = data.aws_instance.ips
-#}
+data "aws_instance" "ipss" {
+  instance_tags = {
+    Name = "jenkins"
+  }
+}
+output "ip" {
+  value = data.aws_instance.ips.public_ip
+}

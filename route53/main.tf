@@ -18,13 +18,13 @@
 #}
 #variable "public_ip" {}
 
-resource "aws_route53_record" "records" {
-  zone_id = "Z01280802SKTCPOFIGWX3"
-  name    = "frontend-roboz.online"
-  type    = "A"
-  ttl     = 30
-  records = [34.229.160.180]
-}
+#resource "aws_route53_record" "records" {
+#  zone_id = "Z01280802SKTCPOFIGWX3"
+#  name    = "roboz.online"
+#  type    = "A"
+#  ttl     = 30
+#  records = [34.229.160.180]
+#}
 
 #variable "component" {}
 #variable "private_ip" {}

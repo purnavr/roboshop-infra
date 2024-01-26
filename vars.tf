@@ -14,10 +14,10 @@
 variable "names" {
   default = {
     workstation = {
-      name = workstation
+      name = "workstation"
     }
     jenkins = {
-      name = jenkins
+      name = "jenkins"
     }
   }
 }

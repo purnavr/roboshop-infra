@@ -42,5 +42,4 @@ data "aws_instance" "ips" {
 
   }
 
-  instance_state_names = ["running"]
 }

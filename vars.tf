@@ -10,3 +10,7 @@
 #    }
 #  }
 #}
+
+variable "names" {
+  default = ["workstation", "jenkins"]
+}

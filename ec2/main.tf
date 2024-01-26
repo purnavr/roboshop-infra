@@ -42,6 +42,7 @@ data "aws_instance" "ipss" {
 
 output "pu1w" {
   value = data.aws_instance.ips.public_ip
+
 }
 output "pr1w" {
   value = data.aws_instance.ips.private_ip

@@ -3,7 +3,6 @@ resource "aws_spot_instance_request" "ec2" {
   spot_price = "0.010"
   instance_type          = "t3.nano"
   spot_type = "persistent"
-  wait_for_fulfillment   = "true"
 
   tags = {
     Name = "ec2"

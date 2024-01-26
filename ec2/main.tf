@@ -33,11 +33,6 @@ data "aws_instance" "ips" {
   instance_tags = {
     Name = "workstation"
   }
-  filter {
-    name   = "ip-address"
-    values = [sg-0497e25cd969a429f]
-
-  }
 
 }
 

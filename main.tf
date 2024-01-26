@@ -18,12 +18,12 @@
 #  private_ip = module.ec2[each.value["name"]].private_ip
 #  public_ip = module.ec2["user"].public_ip
 #}
-module "ec2" {
-  source = "./ec2"
-}
-module "dns" {
-  for_each = var.names
-  source = "./route53"
-  component = each.value["name"]
-  private_ip = module.ec2.pr1w
-}
+#module "ec2" {
+#  source = "./ec2"
+#}
+#module "dns" {
+#  for_each = var.names
+#  source = "./route53"
+#  component = each.value["name"]
+#  private_ip = module.ec2.pr1w
+#}

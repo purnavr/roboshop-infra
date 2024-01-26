@@ -11,13 +11,13 @@
 #  }
 #}
 
-variable "names" {
-  default = {
-    workstation = {
-      name = "workstation"
-    }
-    jenkins = {
-      name = "jenkins"
-    }
-  }
-}
+#variable "names" {
+#  default = {
+#    workstation = {
+#      name = "workstation"
+#    }
+#    jenkins = {
+#      name = "jenkins"
+#    }
+#  }
+#}

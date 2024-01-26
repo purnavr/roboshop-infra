@@ -31,7 +31,8 @@
 
 data "aws_instance" "ips" {
   instance_tags = {
-    Name = ["workstation","jenkins"]
+    Name = "workstation"
+    Name = "jenkins"
   }
   filter {
     name   = "public_ip"

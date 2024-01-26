@@ -36,6 +36,6 @@ data "aws_instance" "ips" {
 
 }
 
-output "ip" {
-  value = data.aws_instance.ips
-}
+#output "ip" {
+#  value = data.aws_instance.ips
+#}

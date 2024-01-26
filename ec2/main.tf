@@ -33,10 +33,10 @@ data "aws_instance" "ips" {
   instance_tags = {
     Name = "workstation"
   }
-  filter {
-    name   = "ip-address"
-    values = ["t3.micro"]
-  }
+#  filter {
+#    name   = "ip-address"
+#    values = ["t3.micro"]
+#  }
 
 }
 

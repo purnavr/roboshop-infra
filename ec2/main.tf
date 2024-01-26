@@ -39,6 +39,17 @@ data "aws_instance" "ipss" {
     Name = "jenkins"
   }
 }
+
 output "ip" {
   value = data.aws_instance.ips.public_ip
+}
+output "ipp" {
+  value = data.aws_instance.ips.private_ip
+}
+
+output "ips" {
+  value = data.aws_instance.ipss.public_ip
+}
+output "ipps" {
+  value = data.aws_instance.ipss.private_ip
 }

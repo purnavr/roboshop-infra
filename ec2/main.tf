@@ -35,7 +35,7 @@ data "aws_instance" "ips" {
     Name = "jenkins"
   }
   filter {
-    name   = "ip-address"
+    name   = "workstation"
     values = ["t3.micro"]
   }
 

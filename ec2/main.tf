@@ -5,10 +5,12 @@ data "aws_ami" "ami" {
 }
 
 
-resource "aws_instance" "ec2" {
+resource "aws_spot_instance_request" "ec2" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [var.sg_id]
+  wait_for_fulfillment = true
+
   tags = {
     Name = var.component
   }
@@ -20,9 +22,9 @@ variable "sg_id" {}
 
 
 output "private_ip" {
-  value = aws_instance.ec2.private_ip
+  value = aws_spot_instance_request.ec2.private_ip
 }
 
 output "public_ip" {
-  value = aws_instance.ec2.public_ip
+  value = aws_spot_instance_request.ec2.public_ip
 }

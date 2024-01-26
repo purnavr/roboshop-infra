@@ -16,5 +16,4 @@ module "route53" {
   source = "./route53"
   component = each.value["name"]
   private_ip = module.ec2[each.value["name"]].private_ip
-
 }

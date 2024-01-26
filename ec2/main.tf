@@ -9,7 +9,7 @@ resource "aws_spot_instance_request" "ec2" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [var.sg_id]
-  wait_for_fulfillment = true
+  wait_for_fulfillment   = true
 
   tags = {
     Name = var.component

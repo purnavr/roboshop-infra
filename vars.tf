@@ -1,23 +1,13 @@
-#variable "instances" {
-#  default = {
-#    catalogue = {
-#      name = "catalogue"
-#      type = "t3.micro"
-#    }
-#    user = {
-#      name = "user"
-#      type = "t3.micro"
-#    }
-#  }
-#}
+variable "instances" {
+  default = {
+    catalogue = {
+      name = "catalogue"
+      type = "t3.nano"
+    }
+    user = {
+      name = "user"
+      type = "t3.nano"
+    }
+  }
+}
 
-#variable "names" {
-#  default = {
-#    workstation = {
-#      name = "workstation"
-#    }
-#    jenkins = {
-#      name = "jenkins"
-#    }
-#  }
-#}

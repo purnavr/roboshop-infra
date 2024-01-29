@@ -7,7 +7,7 @@ data "aws_ami" "ami" {
 
 resource "aws_spot_instance_request" "ec2" {
   ami                    = data.aws_ami.ami.id
-  instance_type          = "t2.micro"
+  instance_type          = "t3.micro"
 
   tags = {
     Name = "ec2"

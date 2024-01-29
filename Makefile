@@ -1,5 +1,6 @@
 apply:
-	terraform init
-	terraform apply -auto-approve
-destroy:
-	terraform destroy -auto-approve
+	ls
+#	terraform init
+#	terraform apply -auto-approve
+#destroy:
+#	terraform destroy -auto-approve

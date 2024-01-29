@@ -3,6 +3,6 @@ resource "aws_route53_record" "public_rc" {
   name    = "roboz.online"
   type    = "A"
   ttl     = 30
-  records = [34.230.6.218]
+  records = ["34.230.6.218"]
 }
 #variable "public_ip" {}

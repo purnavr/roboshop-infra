@@ -11,16 +11,16 @@ module "sg" {
   source = "./sg"
 }
 
-module "route53" {
-  for_each = var.instances
-  source = "./route53"
-  component = each.value["name"]
-  private_ip = module.ec2[each.value["name"]].privateip
-}
-
-module "route53p" {
-  source = "./route53p"
-  public_ip = module.ec2["catalogue"].publicip
+#module "route53" {
+#  for_each = var.instances
+#  source = "./route53"
+#  component = each.value["name"]
+#  private_ip = module.ec2[each.value["name"]].privateip
+#}
+#
+#module "route53p" {
+#  source = "./route53p"
+#  public_ip = module.ec2["catalogue"].publicip
 
 
 

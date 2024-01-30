@@ -24,9 +24,9 @@ output "privateip" {
   value = aws_instance.ec2.private_ip
 }
 
-#output "publicip" {
-#  value = aws_instance.ec2.public_ip
-#}
+output "publicip" {
+  value = aws_instance.ec2.public_ip
+}
 
 
 

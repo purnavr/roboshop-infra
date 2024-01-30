@@ -11,5 +11,5 @@ resource "aws_route53_record" "public_rcc" {
   name    = "roboz.online"
   type    = "A"
   ttl     = 30
-  records = ["34.231.7.219"]
+  records = ["35.173.185.71"]
 }

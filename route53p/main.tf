@@ -3,7 +3,7 @@ resource "aws_route53_record" "publicc" {
   name    = "frontend.online"
   type    = "A"
   ttl     = 30
-  records = ["39.230.9.2"]
+  records = ["52.230.9.2"]
 }
 
 resource "aws_route53_record" "public" {
@@ -11,5 +11,5 @@ resource "aws_route53_record" "public" {
   name    = "roboz.online"
   type    = "A"
   ttl     = 30
-  records = ["36.173.18.73"]
+  records = ["41.173.18.73"]
 }

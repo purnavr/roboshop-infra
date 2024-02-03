@@ -4,7 +4,7 @@ variable "instances" {
       name = "catalogue"
       type = "t3.micro"
     }
-    user = {
+    frontend = {
       name = "frontend"
       type = "t3.micro"
     }

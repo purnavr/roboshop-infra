@@ -14,19 +14,19 @@ resource "aws_instance" "ec2" {
     Name = var.component
   }
 
-#  provisioner "remote-exec" {
-#
-#    connection {
-#      host = self.public_ip
-#      user = "centos"
-#      password = "DevOps321"
-#    }
-#
-#    inline = [
-#      "ansible-pull -i localhost -U https://github.com/purnavr/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
-#    ]
-#
-#  }
+  provisioner "remote-exec" {
+
+    connection {
+      host = self.public_ip
+      user = "centos"
+      password = "DevOps321"
+    }
+
+    inline = [
+      "ansible-pull -i localhost -U https://github.com/purnavr/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
+    ]
+
+  }
 }
 
 variable "component" {}

@@ -5,7 +5,7 @@ variable "instances" {
       type = "t3.nano"
     }
     user = {
-      name = "user"
+      name = "frontend"
       type = "t3.nano"
     }
   }

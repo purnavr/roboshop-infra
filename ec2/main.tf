@@ -1,7 +1,7 @@
 data "aws_ami" "ami" {
   most_recent = true
-  name_regex  = "Centos-8-DevOps-Practice"
-  owners      = ["973714476881"]
+  name_regex  = "centos8 ansible-ami"
+  owners      = ["667211563329"]
 }
 
 
@@ -12,6 +12,20 @@ resource "aws_instance" "ec2" {
 
   tags = {
     Name = var.component
+  }
+
+  provisioner "remote-exec" {
+
+    connection {
+      host = self.public_ip
+      user = "centos"
+      password = "DevOps321"
+    }
+
+    inline = [
+      "ansible-pull -i localhost -U https://github.com/purnavr/roboshop-ansible.git roboshop.yml -e role_name=${var.component}"
+    ]
+
   }
 }
 
@@ -27,6 +41,8 @@ output "privateip" {
 output "publicip" {
   value = aws_instance.ec2.public_ip
 }
+
+
 
 
 

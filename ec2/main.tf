@@ -18,7 +18,7 @@ resource "aws_instance" "ec2" {
 
     connection {
       host = self.public_ip
-      user = "centos"
+      user = "root"
       password = "DevOps321"
     }
 

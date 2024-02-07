@@ -6,3 +6,4 @@ resource "aws_ssm_parameter" "par" {
 }
 
 variable "parameters" {}
+

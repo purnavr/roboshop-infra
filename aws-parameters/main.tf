@@ -1,8 +1,8 @@
 resource "aws_ssm_parameter" "par" {
-  for_each = var.parameters
-  name = each.value["name"]
-  type = each.value["type"]
-  value = each.value["value"]
+  count = length(var.parameters)
+  name = count.index["name"]
+  type = count.index["type"]
+  value = count.index["value"]
 }
 
 variable "parameters" {}

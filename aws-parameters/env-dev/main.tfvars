@@ -1,5 +1,12 @@
 parameters = {
+  test = {
     name  = "test"
-    value = "hellow world"
+    value = "hello world"
     type = "String"
+  }
+  test1 = {
+    name  = "test1"
+    value = "hello"
+    type = "String"
+  }
 }

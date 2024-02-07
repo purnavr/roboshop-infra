@@ -1,5 +1,5 @@
 parameters = {
-  test0 = {
+  parameters = {
     name  = "test"
     value = "hello world"
     type = "String"

@@ -1,11 +1,7 @@
 parameters = {
-  name = {
-    name = "test"
-  }
-  value = {
+  param = {
+    name  = "test"
     value = "hellow world"
-  }
-  type = {
-    type = "string"
+    type = "String"
   }
 }

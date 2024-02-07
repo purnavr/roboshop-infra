@@ -1,6 +1,6 @@
 parameters = {
   test0 = {
-    name  = "test"
+    name  = "test0"
     value = "hello world"
     type = "String"
   }

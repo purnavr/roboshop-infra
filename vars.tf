@@ -11,5 +11,7 @@ variable "instances" {
   }
 }
 
+variable "parameters" {}
+
 
 

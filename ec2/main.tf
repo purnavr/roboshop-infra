@@ -37,7 +37,7 @@ resource "aws_route53_record" "records" {
   name    = "${var.component}.roboz.online"
   type    = "A"
   ttl     = 30
-  records = aws_instance.ec2.private_ip
+  records = [aws_instance.ec2.private_ip]
 }
 
 variable "component" {}
@@ -46,9 +46,9 @@ variable "sg_id" {}
 #variable "private_ip" {}
 
 
-output "privateip" {
-  value = aws_instance.ec2.private_ip
-}
+#output "privateip" {
+#  value = aws_instance.ec2.private_ip
+#}
 
 output "publicip" {
   value = aws_instance.ec2.public_ip

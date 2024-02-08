@@ -4,7 +4,7 @@ module "ec2" {
   component     = each.value["name"]
   instance_type = each.value["type"]
   sg_id         = module.sg.sg_id
-  private_ip    = module.ec2.privateip
+
 }
 
 #output "ec2" {

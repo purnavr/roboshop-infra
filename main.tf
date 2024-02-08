@@ -5,6 +5,8 @@ module "ec2" {
   instance_type = each.value["type"]
   sg_id         = module.sg.sg_id
 
+  depends_on = [module.route53]
+
 }
 
 module "sg" {
@@ -22,3 +24,4 @@ module "route53p" {
   source = "./route53p"
   public_ip = module.ec2["catalogue"].publicip
 }
+

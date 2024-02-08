@@ -4,8 +4,12 @@ module "ec2" {
   component     = each.value["name"]
   instance_type = each.value["type"]
   sg_id         = module.sg.sg_id
-  private_ip = each.value["name"].[privateip]
+  private_ip    = module.ec2.privateip
 }
+
+#output "ec2" {
+#  value = module.ec2.privateip
+#}
 
 module "sg" {
   source = "./sg"

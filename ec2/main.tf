@@ -16,6 +16,7 @@ resource "aws_instance" "ec2" {
 }
 
 resource "null_resource" "provisioner" {
+  depends_on = [aws_route53_record.records]
   provisioner "remote-exec" {
 
     connection {
@@ -31,9 +32,18 @@ resource "null_resource" "provisioner" {
   }
 }
 
+resource "aws_route53_record" "records" {
+  zone_id = "Z01280802SKTCPOFIGWX3"
+  name    = "${var.component}.roboz.online"
+  type    = "A"
+  ttl     = 30
+  records = [var.private_ip]
+}
+
 variable "component" {}
 variable "instance_type" {}
 variable "sg_id" {}
+variable "private_ip" {}
 
 
 output "privateip" {

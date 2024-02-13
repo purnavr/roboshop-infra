@@ -16,7 +16,6 @@ resource "aws_instance" "ec2" {
 }
 
 resource "null_resource" "provisioner" {
-  depends_on = [aws_route53_record.records]
   provisioner "remote-exec" {
 
     connection {
@@ -65,20 +64,10 @@ resource "aws_route53_record" "records" {
 
 variable "component" {}
 variable "instance_type" {}
-#variable "sg_id" {}
 variable "env" {
   default = "dev"
 }
-#variable "private_ip" {}
 
-
-#output "privateip" {
-#  value = aws_instance.ec2.private_ip
-#}
-#
-#output "publicip" {
-#  value = aws_instance.ec2.public_ip
-#}
 
 
 

@@ -59,8 +59,10 @@ resource "aws_route53_record" "records" {
   name    = "${var.component}.roboz.online"
   type    = "A"
   ttl     = 30
-  records = [aws_instance.ec2.private_ip]
+  records = element ([aws_instance.ec2.private_ip],[aws_instance.ec2.public_ip])
 }
+
+
 
 variable "component" {}
 variable "instance_type" {}

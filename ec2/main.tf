@@ -51,7 +51,7 @@ resource "aws_security_group" "sg" {
   }
 
   tags = {
-    Name = "allow_tl"
+    Name = "${var.component}-${var.env}-sg"
   }
 }
 

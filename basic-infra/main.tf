@@ -3,15 +3,16 @@ module "ec2" {
   source        = "./ec2"
   component     = each.value["name"]
   instance_type = each.value["type"]
+  sg_id         = module.sg.sg_id
 }
 
 #output "ec2" {
 #  value = module.ec2.privateip
 #}
 
-#module "sg" {
-#  source = "./sg"
-#}
+module "sg" {
+  source = "./sg"
+}
 
 #module "route53" {
 #  for_each = var.instances

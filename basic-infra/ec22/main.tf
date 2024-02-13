@@ -8,7 +8,7 @@ data "aws_ami" "ami" {
 resource "aws_instance" "ec2" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.sg.id]
+  vpc_security_group_ids = [var.sg_id]
 
   tags = {
     Name = var.component
@@ -16,7 +16,7 @@ resource "aws_instance" "ec2" {
 }
 
 resource "null_resource" "provisioner" {
-#  depends_on = [aws_route53_record.records]
+  depends_on = [aws_route53_record.records]
   provisioner "remote-exec" {
 
     connection {
@@ -32,29 +32,6 @@ resource "null_resource" "provisioner" {
   }
 }
 
-resource "aws_security_group" "sg" {
-  name = "${var.component}-${var.env}-sg"
-  description = "Allow TLS inbound traffic"
-
-  ingress {
-    description = "TLS from VPC"
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "allow_tl"
-  }
-}
-
 resource "aws_route53_record" "records" {
   zone_id = "Z01280802SKTCPOFIGWX3"
   name    = "${var.component}.roboz.online"
@@ -65,20 +42,17 @@ resource "aws_route53_record" "records" {
 
 variable "component" {}
 variable "instance_type" {}
-#variable "sg_id" {}
-variable "env" {
-  default = "dev"
-}
+variable "sg_id" {}
 #variable "private_ip" {}
 
 
-#output "privateip" {
-#  value = aws_instance.ec2.private_ip
-#}
-#
-#output "publicip" {
-#  value = aws_instance.ec2.public_ip
-#}
+output "privateip" {
+  value = aws_instance.ec2.private_ip
+}
+
+output "publicip" {
+  value = aws_instance.ec2.public_ip
+}
 
 
 

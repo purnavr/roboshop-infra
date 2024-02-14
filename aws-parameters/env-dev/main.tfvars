@@ -11,7 +11,6 @@ parameters = [
   { name  = "dev.mongo_cat_url", value = "mongodb://mongodb.roboz.online:27017/catalogue", type = "String" },
   { name  = "dev.cart_endpoint", value = "cart.roboz.online:8080", type = "String" },
   { name  = "db_host", value = "mysql.roboz.online", type = "String" },
-  { name  = "db_host", value = "mysql.roboz.online", type = "String" },
   { name  = "cart_host", value = "cart.roboz.online", type = "String" },
   { name  = "user_host", value = "user.roboz.online", type = "String" },
   { name  = "ampq_host", value = "rabbitmq.roboz.online", type = "String" },

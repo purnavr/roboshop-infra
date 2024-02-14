@@ -64,24 +64,24 @@ resource "aws_iam_policy" "ssm-policy" {
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
-  {
-    "Sid": "VisualEditor0",
-    "Effect": "Allow",
-    "Action": [
-    "ssm:GetParameterHistory",
-    "ssm:GetParametersByPath",
-    "ssm:GetParameters",
-    "ssm:GetParameter"
-  ],
-    "Resource": "arn:aws:ssm:us-east-1:667211563329:parameter/${var.env}.${var.component}*"
-  },
-  {
-    "Sid": "VisualEditor1",
-    "Effect": "Allow",
-    "Action": "ssm:DescribeParameters",
-    "Resource": "*"
-  }
-  ]
+      {
+        "Sid": "VisualEditor0",
+        "Effect": "Allow",
+        "Action": [
+          "ssm:GetParameterHistory",
+          "ssm:GetParametersByPath",
+          "ssm:GetParameters",
+          "ssm:GetParameter"
+        ],
+        "Resource": "arn:aws:ssm:us-east-1:860050401100:parameter/${var.env}-${var.component}*"
+      },
+      {
+        "Sid": "VisualEditor1",
+        "Effect": "Allow",
+        "Action": "ssm:DescribeParameters",
+        "Resource": "*"
+      }
+    ]
   })
 }
 

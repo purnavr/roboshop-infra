@@ -56,10 +56,10 @@ resource "aws_route53_record" "records" {
   records = [aws_instance.ec2.private_ip]
 }
 
-resource "aws_iam_policy" "policy" {
+resource "aws_iam_policy" "ssm-policy" {
   name        = "${var.env}-${var.component}-ssm"
   path        = "/"
-  description = "My test policy"
+  description = "${var.env}-${var.component}-ssm"
 
   policy = jsonencode({
     "Version": "2012-10-17",
@@ -73,7 +73,7 @@ resource "aws_iam_policy" "policy" {
     "ssm:GetParameters",
     "ssm:GetParameter"
   ],
-    "Resource": "arn:aws:ssm:us-east-1:667211563329:parameter/${var.env}.${var.component}",
+    "Resource": "arn:aws:ssm:us-east-1:667211563329:parameter/${var.env}.${var.component}*"
   },
   {
     "Sid": "VisualEditor1",
@@ -85,7 +85,7 @@ resource "aws_iam_policy" "policy" {
   })
 }
 
-resource "aws_iam_role" "test_role" {
+resource "aws_iam_role" "role" {
   name = "${var.env}-${var.component}-role"
 
   assume_role_policy = jsonencode({
@@ -100,39 +100,16 @@ resource "aws_iam_role" "test_role" {
       }
     ]
   })
-
-  tags = {
-    tag-key = "tag-value"
-  }
 }
 
-resource "aws_iam_instance_profile" "test_profile" {
+resource "aws_iam_instance_profile" "profile" {
   name = "${var.env}-${var.component}-role"
-  role = "${var.env}-${var.component}-role"
+  role = aws_iam_role.role.name
 }
 
-data "aws_iam_policy_document" "assume_role" {
-  statement {
-    effect = "Allow"
-
-    principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
-    }
-
-    actions = ["sts:AssumeRole"]
-  }
-}
-
-resource "aws_iam_role" "role" {
-  name               = "${var.env}-${var.component}-role"
-  path               = "/"
-  assume_role_policy = data.aws_iam_policy_document.assume_role.json
-}
-
-resource "aws_iam_role_policy_attachment" "test-attach" {
+resource "aws_iam_role_policy_attachment" "policy-attach" {
   role       = aws_iam_role.role.name
-  policy_arn = aws_iam_policy.policy.arn
+  policy_arn = aws_iam_policy.ssm-policy.arn
 }
 
 

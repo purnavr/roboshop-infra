@@ -3,7 +3,6 @@ resource "aws_instance" "ec2" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
   iam_instance_profile = "${var.env}-${var.component}-role"
-  env = var.env
 
   tags = {
     Name = var.component

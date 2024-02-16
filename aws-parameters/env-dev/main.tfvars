@@ -19,7 +19,8 @@ parameters = [
   { name  = "dev.payment.cart_port", value = "8080", type = "String" },
   { name  = "dev.payment.user_host", value = "user.roboz.online", type = "String" },
   { name  = "dev.payment.user_port", value = "8080", type = "String" },
-  { name  = "dev.payment.ampq_host", value = "rabbitmq.roboz.online", type = "String" }
+  { name  = "dev.payment.ampq_host", value = "rabbitmq.roboz.online", type = "String" },
+  { name  = "dev.dispatch.ampq_host", value = "rabbitmq.roboz.online", type = "String" },
 ]
 
 

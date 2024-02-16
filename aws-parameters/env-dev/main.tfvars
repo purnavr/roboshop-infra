@@ -24,7 +24,7 @@ parameters = [
 ]
 
 secrets = [
-  { name  = "dev.mysql.password", value = "RoboShop@1", type = "String" },
+  { name  = "dev.mysql.pass", value = "RoboShop@1", type = "String" },
   { name  = "dev.payment.ampq_user", value = "roboshop", type = "String" },
   { name  = "dev.payment.ampq_pass", value = "roboshop123", type = "String" },
   { name  = "dev.rabbitmq.user", value = "roboshop", type = "String" },

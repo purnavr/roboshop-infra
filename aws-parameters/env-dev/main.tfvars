@@ -7,7 +7,7 @@ parameters = [
   { name  = "dev.frontend.payment_url", value = "http://payment.roboz.online:8080/", type = "String" },
   { name  = "dev.cart.redis_host", value = "redis.roboz.online", type = "String" },
   { name  = "dev.cart.catalogue_host", value = "catalogue.roboz.online", type = "String" },
-  { name  = "dev.cart_catalogue_port", value = "8080", type = "String" },
+  { name  = "dev.cart.catalogue_port", value = "8080", type = "String" },
   { name  = "dev.catalogue.mongo", value = "MONGO=true", type = "String" },
   { name  = "dev.catalogue.mongo_url", value = "mongodb://mongodb.roboz.online:27017/catalogue", type = "String" },
   { name  = "dev.user.mongo", value = "MONGO=true", type = "String" },

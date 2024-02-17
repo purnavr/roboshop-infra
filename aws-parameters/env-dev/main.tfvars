@@ -24,13 +24,13 @@ parameters = [
 ]
 
 secrets = [
-  { name  = "dev.mysql.pass", value = "RoboShop@1", type = "String" },
-  { name  = "dev.payment.ampq_user", value = "roboshop", type = "String" },
-  { name  = "dev.payment.ampq_pass", value = "roboshop123", type = "String" },
-  { name  = "dev.rabbitmq.user", value = "roboshop", type = "String" },
-  { name  = "dev.rabbitmq.password", value = "roboshop123", type = "String" },
-  { name  = "dev.dispatch.ampq_user", value = "roboshop", type = "String" },
-  { name  = "dev.dispatch.ampq_pass", value = "roboshop123", type = "String" },
+  { name  = "dev.mysql.pass", value = "RoboShop@1", type = "SecureString" },
+  { name  = "dev.payment.ampq_user", value = "roboshop", type = "SecureString" },
+  { name  = "dev.payment.ampq_pass", value = "roboshop123", type = "SecureString" },
+  { name  = "dev.rabbitmq.user", value = "roboshop", type = "SecureString" },
+  { name  = "dev.rabbitmq.password", value = "roboshop123", type = "SecureString" },
+  { name  = "dev.dispatch.ampq_user", value = "roboshop", type = "SecureString" },
+  { name  = "dev.dispatch.ampq_pass", value = "roboshop123", type = "SecureString" },
 ]
 
 

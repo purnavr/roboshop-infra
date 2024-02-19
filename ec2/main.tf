@@ -4,8 +4,10 @@ resource "aws_instance" "ec2" {
   vpc_security_group_ids = [aws_security_group.sg.id]
   iam_instance_profile = "${var.env}-${var.component}-role"
 
+
   tags = {
     Name = var.component
+    monitor = var.monitor ? "yes" : "no"
   }
 }
 

@@ -1,9 +1,17 @@
 instances = {
   frontend = {
-    name = "frontend"
-    type = "t3.small"
+    name    = "frontend"
+    type    = "t3.small"
     monitor = true
   }
+}
+
+#instances = {
+#  frontend = {
+#    name = "frontend"
+#    type = "t3.small"
+#    monitor = true
+#  }
 #  mongodb = {
 #    name = "mongodb"
 #    type = "t3.small"
@@ -50,7 +58,7 @@ instances = {
 #    type = "t3.small"
 #    monitor = true
 #  }
-}
+#}
 
 env = "dev"
 

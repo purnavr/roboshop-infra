@@ -1,5 +1,6 @@
 git:
 	git pull
+	?ref=v0.0.2
 	rm -rf .terraform
 dev-apply: git
 	terraform init -backend-config=env-dev/state.tfvars

@@ -6,12 +6,12 @@ vpc = {
       public-az1 = {
         name = "public-az1"
         cidr_block = "10.0.0.0/24"
-        availability_zone = us-east-1a
+        availability_zone = "us-east-1a"
       }
       public-az2 = {
         name = "public-az2"
         cidr_block = "10.0.1.0/24"
-        availability_zone = us-east-1b
+        availability_zone = "us-east-1b"
     }
 
     private_subnets = {
@@ -32,4 +32,3 @@ vpc = {
 }
 
 env = "dev"
-

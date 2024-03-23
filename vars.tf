@@ -1,9 +1,5 @@
-variable "vpc" {}
-
 variable "env" {}
-variable "tags" {}
-
-
+variable "vpc" {}
 
 
 

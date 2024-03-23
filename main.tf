@@ -5,5 +5,6 @@ module "vpc" {
   for_each = var.vpc
   vpc_cidr_block = each.value["vpc_cidr_block"]
   public_subnets = each.value["public_subnets"]
+
 }
 

@@ -1,4 +1,4 @@
-module "abc" {
+module "vpc" {
   source = "https://github.com/purnavr/tf-module-vpc.git"
   env    = var.env
   for_each = var.vpc

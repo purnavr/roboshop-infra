@@ -11,9 +11,9 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
-#output "vpc" {
-#  value = module.vpc
-#}
+output "vpc" {
+  value = module.vpc
+}
 
 #output "vpc" {
 #  value = local.db_subnet_ids
@@ -31,7 +31,7 @@ module "docdb" {
   skip_final_snapshot = each.value["skip_final_snapshot"]
   no_of_instances = each.value["no_of_instances"]
   instance_class = each.value["instance_class"]
-  subnet_ids = local.db_subnet_ids
+  #subnet_ids = local.db_subnet_ids
 
 }
 

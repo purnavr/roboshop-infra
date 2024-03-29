@@ -65,3 +65,15 @@ module "elasticache" {
   engine_version = each.value["engine_version"]
   port = each.value["port"]
 }
+
+module "rabbitmq" {
+  source = "git::https://github.com/purnavr/tf-module-rabbitmq.git"
+  env = var.env
+  tags = var.tags
+
+  subnet_ids = local.db_subnet_ids
+
+  for_each = var.rabbitmq
+  instance_type = each.value["instance_type"]
+
+}

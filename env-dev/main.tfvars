@@ -120,7 +120,7 @@ apps = {
     min_size           = 1
     subnet_name = "web"
     port = 80
-    allo_app_to = "public"
+    allow_app_to = "public"
   }
   catalogue = {
     component = "catalogue"
@@ -130,7 +130,7 @@ apps = {
     min_size           = 1
     subnet_name = "app"
     port = 8080
-    allo_app_to = "app"
+    allow_app_to = "app"
   }
   user = {
     component = "user"
@@ -140,7 +140,7 @@ apps = {
     min_size           = 1
     subnet_name = "app"
     port = 8080
-    allo_app_to = "app"
+    allow_app_to = "app"
   }
   cart = {
     component = "cart"
@@ -150,7 +150,7 @@ apps = {
     min_size           = 1
     subnet_name = "app"
     port = 8080
-    allo_app_to = "app"
+    allow_app_to = "app"
   }
   shipping = {
     component = "shipping"
@@ -170,7 +170,7 @@ apps = {
     min_size           = 1
     subnet_name = "app"
     port = 8080
-    allo_app_to = "app"
+    allow_app_to = "app"
   }
 }
 

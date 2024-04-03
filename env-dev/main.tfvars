@@ -1,5 +1,6 @@
 env = "dev"
 bastion_cidr = "172.31.45.89/32"
+dns_domain = "roboz.online"
 
 vpc = {
   main = {
@@ -101,6 +102,7 @@ alb = {
     name = "public"
     internal = false
     load_balancer_type = "application"
+    allow_cidr = ["0.0.0.0/0"]
   }
 
   private = {
@@ -108,6 +110,7 @@ alb = {
     name = "private"
     internal = true
     load_balancer_type = "application"
+    allow_cidr = ["10.0.2.0/24","10.0.3.0/24","10.0.4.0/24","10.0.5.0/24"]
   }
 }
 
@@ -121,6 +124,8 @@ apps = {
     subnet_name = "web"
     port = 80
     allow_app_to = "public"
+    alb = "public"
+    listener_priority = 10
   }
   catalogue = {
     component = "catalogue"
@@ -131,6 +136,9 @@ apps = {
     subnet_name = "app"
     port = 8080
     allow_app_to = "app"
+    alb = "private"
+    listener_priority = 10
+
   }
   user = {
     component = "user"
@@ -141,6 +149,8 @@ apps = {
     subnet_name = "app"
     port = 8080
     allow_app_to = "app"
+    alb = "private"
+    listener_priority = 11
   }
   cart = {
     component = "cart"
@@ -151,6 +161,8 @@ apps = {
     subnet_name = "app"
     port = 8080
     allow_app_to = "app"
+    alb = "private"
+    listener_priority = 12
   }
   shipping = {
     component = "shipping"
@@ -161,6 +173,8 @@ apps = {
     subnet_name = "app"
     port = 8080
     allow_app_to = "app"
+    alb = "private"
+    listener_priority = 13
   }
   payment = {
     component = "payment"
@@ -171,6 +185,8 @@ apps = {
     subnet_name = "app"
     port = 8080
     allow_app_to = "app"
+    alb = "private"
+    listener_priority = 14
   }
 }
 

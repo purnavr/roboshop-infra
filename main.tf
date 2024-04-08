@@ -23,22 +23,26 @@ output "alb" {
 #  value = local.db_subnet_ids
 #}
 #
-#module "docdb" {
-#  source = "git::https://github.com/purnavr/tf-module-docdb.git"
-#  env = var.env
-#  tags = var.tags
-#  for_each = var.docdb
-#  engine = each.value["engine"]
-#  engine_version = each.value["engine_version"]
-#  backup_retention_period = each.value["backup_retention_period"]
-#  preferred_backup_window = each.value["preferred_backup_window"]
-#  skip_final_snapshot = each.value["skip_final_snapshot"]
-#  no_of_instances = each.value["no_of_instances"]
-#  instance_class = each.value["instance_class"]
-#  subnet_ids = local.db_subnet_ids
-#
-#}
-#
+module "docdb" {
+  source = "git::https://github.com/purnavr/tf-module-docdb.git"
+  env = var.env
+  tags = var.tags
+
+  vpc_id = module.vpc["main"].vpc_id
+
+  for_each = var.docdb
+  engine = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  backup_retention_period = each.value["backup_retention_period"]
+  preferred_backup_window = each.value["preferred_backup_window"]
+  skip_final_snapshot = each.value["skip_final_snapshot"]
+  no_of_instances = each.value["no_of_instances"]
+  instance_class = each.value["instance_class"]
+  subnet_ids = local.db_subnet_ids
+  #allow_subnets = lookup(local.subnet_cidr, each.value[allow_subnets], null )
+
+}
+
 #module "rds" {
 #  source = "git::https://github.com/purnavr/tf-module-rds.git"
 #  env = var.env
@@ -82,41 +86,42 @@ output "alb" {
 #
 #}
 
-module "alb" {
-  source = "git::https://github.com/purnavr/tf-module-alb.git"
-  env = var.env
-  tags = var.tags
-
-  vpc_id = module.vpc["main"].vpc_id
-
-  for_each = var.alb
-  name = each.value["name"]
-  internal = each.value["internal"]
-  load_balancer_type = each.value["load_balancer_type"]
-  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
-  allow_cidr = each.value["allow_cidr"]
-}
-
-module "app" {
-  source = "git::https://github.com/purnavr/tf-module-app.git"
-  env = var.env
-  tags = var.tags
-
-  vpc_id = module.vpc["main"].vpc_id
-
-  bastion_cidr = var.bastion_cidr
-  dns_domain = var.dns_domain
-
-  for_each = var.apps
-  component = each.value["component"]
-  instance_type = each.value["instance_type"]
-  desired_capacity = each.value["desired_capacity"]
-  max_size = each.value["max_size"]
-  min_size = each.value["min_size"]
-  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null )
-  port = each.value["port"]
-  allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null )
-  alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
-  listener_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
-  listener_priority = each.value["listener_priority"]
-}
+#module "alb" {
+#  source = "git::https://github.com/purnavr/tf-module-alb.git"
+#  env = var.env
+#  tags = var.tags
+#
+#  vpc_id = module.vpc["main"].vpc_id
+#
+#  for_each = var.alb
+#  name = each.value["name"]
+#  internal = each.value["internal"]
+#  load_balancer_type = each.value["load_balancer_type"]
+#  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
+#  allow_cidr = each.value["allow_cidr"]
+#}
+#
+#module "app" {
+#  source = "git::https://github.com/purnavr/tf-module-app.git"
+#  env = var.env
+#  tags = var.tags
+#
+#  vpc_id = module.vpc["main"].vpc_id
+#
+#  bastion_cidr = var.bastion_cidr
+#  dns_domain = var.dns_domain
+#
+#  for_each = var.apps
+#  component = each.value["component"]
+#  instance_type = each.value["instance_type"]
+#  desired_capacity = each.value["desired_capacity"]
+#  max_size = each.value["max_size"]
+#  min_size = each.value["min_size"]
+#  subnets = lookup(local.subnet_ids, each.value["subnet_name"], null )
+#  port = each.value["port"]
+#  allow_app_to = lookup(local.subnet_cidr, each.value["allow_app_to"], null )
+#  alb_dns_name = lookup(lookup(lookup(module.alb, each.value["alb"], null), "alb", null), "dns_name", null)
+#  listener_arn = lookup(lookup(lookup(module.alb, each.value["alb"], null), "listener", null), "arn", null)
+#  listener_priority = each.value["listener_priority"]
+#}
+ 

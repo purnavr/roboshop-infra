@@ -38,7 +38,7 @@ module "docdb" {
   skip_final_snapshot = each.value["skip_final_snapshot"]
   no_of_instances = each.value["no_of_instances"]
   instance_class = each.value["instance_class"]
-  subnet_ids = local.db_subnet_ids
+  #subnet_ids = local.db_subnet_ids
   #allow_subnets = lookup(local.subnet_cidr, each.value[allow_subnets], null )
 
 }

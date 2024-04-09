@@ -76,6 +76,7 @@ rds = {
     preferred_backup_window = "07:00-09:00"
     no_of_instances = 1
     instance_class = "db.t3.medium"
+    allow_subnets = "app"
   }
 }
 
@@ -86,6 +87,7 @@ elasticache = {
     node_type = "cache.t3.micro"
     num_cache_nodes = 1
     port = 6379
+    allow_subnets = "app"
 
 
   }
@@ -94,6 +96,7 @@ elasticache = {
 rabbitmq = {
   main = {
     instance_type = "t3.micro"
+    allow_subnets = "app"
   }
 }
 
@@ -127,6 +130,7 @@ apps = {
     allow_app_to = "public"
     alb = "public"
     listener_priority = 10
+    parameters = []
   }
   catalogue = {
     component = "catalogue"
@@ -139,6 +143,7 @@ apps = {
     allow_app_to = "app"
     alb = "private"
     listener_priority = 10
+    parameters = ["docdb"]
 
   }
   user = {
@@ -152,6 +157,7 @@ apps = {
     allow_app_to = "app"
     alb = "private"
     listener_priority = 11
+    parameters = ["docdb", "easticache"]
   }
   cart = {
     component = "cart"
@@ -164,6 +170,7 @@ apps = {
     allow_app_to = "app"
     alb = "private"
     listener_priority = 12
+    parameters = ["easticache"]
   }
   shipping = {
     component = "shipping"
@@ -176,6 +183,7 @@ apps = {
     allow_app_to = "app"
     alb = "private"
     listener_priority = 13
+    parameters = ["rds"]
   }
   payment = {
     component = "payment"
@@ -188,6 +196,7 @@ apps = {
     allow_app_to = "app"
     alb = "private"
     listener_priority = 14
+    parameters = []
   }
 }
 

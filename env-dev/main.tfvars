@@ -155,7 +155,7 @@ apps = {
     allow_app_to = "app"
     alb = "private"
     listener_priority = 11
-    parameters = ["docdb", "easticache"]
+    parameters = ["docdb", "elasticache"]
   }
   cart = {
     component = "cart"
@@ -168,7 +168,7 @@ apps = {
     allow_app_to = "app"
     alb = "private"
     listener_priority = 12
-    parameters = ["easticache"]
+    parameters = ["elasticache"]
   }
   shipping = {
     component = "shipping"

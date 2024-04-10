@@ -88,8 +88,6 @@ elasticache = {
     num_cache_nodes = 1
     port = 6379
     allow_subnets = "app"
-
-
   }
 }
 

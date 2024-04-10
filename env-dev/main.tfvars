@@ -1,5 +1,5 @@
 env = "dev"
-bastion_cidr = ["172.31.45.89/32"]
+bastion_cidr = "172.31.45.89/32"
 dns_domain = "roboz.online"
 
 vpc = {

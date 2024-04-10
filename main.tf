@@ -74,7 +74,7 @@ module "elasticache" {
   num_cache_nodes = each.value["num_cache_nodes"]
   engine_version = each.value["engine_version"]
   port = each.value["port"]
-  allow_subnets = lookup(local.subnet_cidr, each.value[" allow_subnets"], null)
+  allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 }
 
 module "rabbitmq" {

@@ -90,6 +90,7 @@ module "rabbitmq" {
   for_each = var.rabbitmq
   instance_type = each.value["instance_type"]
   allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
+  parameters = each.value["parameters"]
 
 
 

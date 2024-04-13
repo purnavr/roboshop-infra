@@ -118,6 +118,7 @@ module "app" {
   vpc_id = module.vpc["main"].vpc_id
 
   bastion_cidr = var.bastion_cidr
+  monitoring_nodes = var.monitoring_nodes
   dns_domain = var.dns_domain
 
   for_each = var.apps
@@ -134,4 +135,36 @@ module "app" {
   listener_priority = each.value["listener_priority"]
   parameters = each.value["parameters"]
 }
- 
+
+## Load Runner
+
+data "aws_ami" "ami" {
+  most_recent = true
+  name_regex  = "centos-8-ansible-image"
+  owners      = ["self"]
+}
+
+
+resource "aws_spot_instance_request" "load_runner" {
+  ami           = data.aws_ami.ami.id
+  instance_type = "t3.medium"
+  wait_for_fulfillment = true
+  vpc_security_group_ids = ["allow-all"]
+
+  tags = merge(var.tags, { Name = "load-runner"})
+
+}
+
+resource "aws_ec2_tag" "name-tag" {
+  resource_id = aws_spot_instance_request.load_runner.spot_instance_id
+  key         = "Name"
+  value       = "load-runner"
+}
+
+resource "aws_security_group" "loadrunner" {
+  name        = "loadrunner"
+  description = "loadrunner"
+  vpc_id      = module.vpc["main"].vpc_id
+
+}
+

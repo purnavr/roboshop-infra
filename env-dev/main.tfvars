@@ -1,6 +1,6 @@
 env = "dev"
 bastion_cidr = "172.31.45.89/32"
-monitoring_nodes = [prom ip address]
+monitoring_nodes = [172.31.47.226/32]
 dns_domain = "roboz.online"
 
 vpc = {

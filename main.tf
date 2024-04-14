@@ -136,29 +136,29 @@ module "app" {
   parameters = each.value["parameters"]
 }
 
-## Load Runner
-
-data "aws_ami" "ami" {
-  most_recent = true
-  name_regex  = "centos-8-ansible-image"
-  owners      = ["self"]
-}
-
-
-resource "aws_spot_instance_request" "load-runner" {
-  ami           = data.aws_ami.ami.id
-  instance_type = "t3.medium"
-  wait_for_fulfillment = true
-  vpc_security_group_ids = ["sg-0497e25cd969a429f"]
-
-  tags = merge(var.tags, { Name = "load-runner"})
-
-}
-
-resource "aws_ec2_tag" "name-tag" {
-  resource_id = aws_spot_instance_request.load-runner.spot_instance_id
-  key         = "Name"
-  value       = "load-runner"
-}
+### Load Runner
+#
+#data "aws_ami" "ami" {
+#  most_recent = true
+#  name_regex  = "centos-8-ansible-image"
+#  owners      = ["self"]
+#}
+#
+#
+#resource "aws_spot_instance_request" "load-runner" {
+#  ami           = data.aws_ami.ami.id
+#  instance_type = "t3.medium"
+#  wait_for_fulfillment = true
+#  vpc_security_group_ids = ["sg-0497e25cd969a429f"]
+#
+#  tags = merge(var.tags, { Name = "load-runner"})
+#
+#}
+#
+#resource "aws_ec2_tag" "name-tag" {
+#  resource_id = aws_spot_instance_request.load-runner.spot_instance_id
+#  key         = "Name"
+#  value       = "load-runner"
+#}
 
 

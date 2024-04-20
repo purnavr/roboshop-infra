@@ -1,5 +1,5 @@
 parameters = [
-  { name  = "test", value = "hello world", type = "String" },
+#  { name  = "test", value = "hello world", type = "String" },
   { name  = "prod.frontend.catalogue_url", value = "http://catalogue-prod.roboz.online:80/", type = "String" },
   { name  = "prod.frontend.user_url", value = "http://user-prod.roboz.online:80/", type = "String" },
   { name  = "prod.frontend.cart_url", value = "http://cart-prod.roboz.online:80/", type = "String" },

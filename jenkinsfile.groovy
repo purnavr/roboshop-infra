@@ -1,3 +1,3 @@
-pipeline {
+@Library('roboshop') _
 
-}
+terraform()

@@ -1,5 +1,5 @@
 env = "prod"
-bastion_cidr = "172.31.45.89/32"
+bastion_cidr = "172.31.93.12/32"
 monitoring_nodes = "172.31.41.182/32"
 dns_domain = "roboz.online"
 

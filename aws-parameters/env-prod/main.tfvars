@@ -23,6 +23,12 @@ parameters = [
   { name  = "prod.payment.user_port", value = "80", type = "String" },
   { name  = "prod.payment.ampq_host", value = "rabbitmq-prod.roboz.online", type = "String" },
   { name  = "prod.dispatch.ampq_host", value = "rabbitmq-prod.roboz.online", type = "String" },
+  { name  = "prod.frontend.app_version", value = "1.0.0", type = "String" },
+  { name  = "prod.catalogue.app_version", value = "1.0.0", type = "String" },
+  { name  = "prod.user.app_version", value = "1.0.0", type = "String" },
+  { name  = "prod.cart.app_version", value = "1.0.0", type = "String" },
+  { name  = "prod.shipping.app_version", value = "1.0.1", type = "String" },
+  { name  = "prod.payment.app_version", value = "1.0.0", type = "String" },
 ]
 
 secrets = [

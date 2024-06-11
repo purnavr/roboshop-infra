@@ -109,7 +109,7 @@ module "alb" {
 
 module "app" {
 
-  depends_on = [module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
+  depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
 
   source = "git::https://github.com/purnavr/tf-module-app.git"
   env = var.env

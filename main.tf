@@ -136,7 +136,7 @@ module "app" {
   parameters = each.value["parameters"]
 }
 
-
+/*
 ### Load Runner
 resource "aws_spot_instance_request" "load-runner" {
   ami           = data.aws_ami.ami.id
@@ -176,4 +176,4 @@ resource "null_resource" "load-gen" {
     ]
   }
 }
-
+*/

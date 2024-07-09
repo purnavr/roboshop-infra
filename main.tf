@@ -22,7 +22,7 @@ output "vpc" {
 #output "vpc" {
 #  value = local.db_subnet_ids
 #}
-/*
+
 module "docdb" {
   source = "git::https://github.com/purnavr/tf-module-docdb.git"
   env = var.env
@@ -91,7 +91,7 @@ module "rabbitmq" {
   instance_type = each.value["instance_type"]
   allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 }
-*/
+
 module "alb" {
   source = "git::https://github.com/purnavr/tf-module-alb.git"
   env = var.env

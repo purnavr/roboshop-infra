@@ -106,10 +106,11 @@ module "alb" {
   subnets = lookup(local.subnet_ids, each.value["subnet_name"], null)
   allow_cidr = each.value["allow_cidr"]
 }
+*/
 
 module "app" {
 
-  depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
+#  depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
 
   source = "git::https://github.com/purnavr/tf-module-app.git"
   env = var.env

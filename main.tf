@@ -188,7 +188,7 @@ module "minikube" {
   cluster_name  = "minikube"
   aws_instance_type = "t3.medium"
   ssh_public_key = "~/.ssh/id_rsa.pub"
-  aws_subnet_id = lookup(local.subnet_ids,"public", null)[0]
+  aws_subnet_id = lookup(local.subnet_ids, "public", null)[0]
   hosted_zone = "roboz.online"
   hosted_zone_private = false
 

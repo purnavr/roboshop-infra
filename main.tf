@@ -193,7 +193,7 @@ module "minikube" {
   hosted_zone_private = false
 
   tags = {
-    Application = "Minikube"
+    Name = "Minikube"
   }
 
   addons = [

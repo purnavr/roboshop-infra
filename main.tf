@@ -205,9 +205,9 @@ module "minikube" {
 }
 
 output "MINIKUBE_SERVER" {
-  value = "ssh root@${module.minikube.public_ip}"
+  value = "ssh centos@${module.minikube.public_ip}"
 }
 
 output "MINIKUBE_CONFIG" {
-  value = "scp root@${module.minikube.public_ip}:/home/root/kubeconfig ~/ .kube/config"
+  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/ .kube/config"
 }

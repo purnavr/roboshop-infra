@@ -11,7 +11,7 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
-/*
+
 output "vpc" {
   value = module.vpc
 }
@@ -19,10 +19,12 @@ output "vpc" {
 #output "alb" {
 #  value = module.alb
 #}
-
+#
 #output "vpc" {
 #  value = local.db_subnet_ids
 #}
+
+/*
 
 module "docdb" {
   source = "git::https://github.com/purnavr/tf-module-docdb.git"

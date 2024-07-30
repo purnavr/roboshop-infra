@@ -193,7 +193,7 @@ resource "null_resource" "shell-commands" {
     connection {
       host = module.minikube.public_ip
       user = "centos"
-      public_key = "~/.ssh/id_rsa.pub"
+      private_key = "~/.ssh/id_rsa"
       type = "ssh"
     }
     inline = [

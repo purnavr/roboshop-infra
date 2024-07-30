@@ -183,26 +183,26 @@ resource "null_resource" "load-gen" {
 }
 */
 
-resource "null_resource" "shell-commands" {
-
-  triggers = {
-    abc = module.minikube.public_ip
-  }
-
-  provisioner "remote-exec" {
-    connection {
-      host = module.minikube.public_ip
-      user = "centos"
-      private_key = "~/.ssh/id_rsa"
-      type = "ssh"
-    }
-    inline = [
-      "cd /etc/yum.repos.d/",
-      "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*",
-      "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
-    ]
-  }
-}
+#resource "null_resource" "shell-commands" {
+#
+#  triggers = {
+#    abc = module.minikube.public_ip
+#  }
+#
+#  provisioner "remote-exec" {
+#    connection {
+#      host = module.minikube.public_ip
+#      user = "centos"
+#      private_key = "~/.ssh/id_rsa"
+#      type = "ssh"
+#    }
+#    inline = [
+#      "cd /etc/yum.repos.d/",
+#      "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*",
+#      "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
+#    ]
+#  }
+#}
 
 module "minikube" {
   source = "github.com/purnavr/terraform-aws-minikube"

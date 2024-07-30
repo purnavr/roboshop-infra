@@ -205,7 +205,7 @@ resource "null_resource" "shell-commands" {
 }
 
 module "minikube" {
-  source = "github.com/scholzj/terraform-aws-minikube"
+  source = "github.com/purnavr/terraform-aws-minikube"
 
   aws_region          = "us-east-1"
   cluster_name        = "minikube"

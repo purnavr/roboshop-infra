@@ -193,7 +193,7 @@ resource "null_resource" "shell-commands" {
     connection {
       host = module.minikube.public_ip
       user = "centos"
-      password = data.aws_ssm_parameter.ssh_pass.value
+      public_key = "~/.ssh/id_rsa.pub"
       type = "ssh"
     }
     inline = [

@@ -205,7 +205,7 @@ resource "null_resource" "load-gen" {
 #}
 
 module "minikube" {
-  source = "github.com/purnavr/terraform-aws-minikube"
+  source = "github.com/purnavr/terraform-minikube"
 
   aws_region          = "us-east-1"
   cluster_name        = "minikube"

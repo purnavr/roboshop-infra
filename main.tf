@@ -183,27 +183,59 @@ resource "null_resource" "load-gen" {
 }
 */
 
-#resource "null_resource" "shell-commands" {
-#
-#  triggers = {
-#    abc = module.minikube.public_ip
-#  }
-#
-#  provisioner "remote-exec" {
-#    connection {
-#      host = module.minikube.public_ip
-#      user = "centos"
-#      private_key = "~/.ssh/id_rsa"
-#      type = "ssh"
-#    }
-#    inline = [
-#      "cd /etc/yum.repos.d/",
-#      "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*",
-#      "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
-#    ]
-#  }
-#}
+resource "null_resource" "shell-commands" {
 
+  triggers = {
+    abc = module.minikube.public_ip
+  }
+
+  provisioner "remote-exec" {
+    connection {
+      host = module.minikube.public_ip
+      user = "centos"
+      private_key = "~/.ssh/id_rsa"
+      type = "ssh"
+    }
+    inline = [
+      "cd /etc/yum.repos.d/",
+      "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*",
+      "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
+    ]
+  }
+}
+
+module "minikube" {
+  source = "github.com/scholzj/terraform-aws-minikube"
+
+  aws_region          = "us-east-1"
+  cluster_name        = "minikube"
+  aws_instance_type   = "t3.medium"
+  ssh_public_key      = "~/.ssh/id_rsa.pub"
+  aws_subnet_id       = lookup(local.subnet_ids, "public", null)[0]
+  hosted_zone         = "devopsb71.online"
+  hosted_zone_private = false
+
+  tags = {
+    Name = "Minikube"
+  }
+
+  addons = [
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"
+  ]
+}
+
+output "MINIKUBE_SERVER" {
+  value = "ssh centos@${module.minikube.public_ip}"
+}
+
+output "KUBE_CONFIG" {
+  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
+}
+
+/*
 module "minikube" {
   source = "github.com/purnavr/terraform-minikube"
 
@@ -234,5 +266,5 @@ output "MINIKUBE_SERVER" {
 output "KUBE_CONFIG" {
   value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
 }
-
+/*
 

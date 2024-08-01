@@ -181,7 +181,7 @@ resource "null_resource" "load-gen" {
     ]
   }
 }
-*/
+
 
 resource "null_resource" "shell-commands" {
 
@@ -203,6 +203,7 @@ resource "null_resource" "shell-commands" {
     ]
   }
 }
+*/
 
 module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"

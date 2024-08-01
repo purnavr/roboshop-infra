@@ -183,27 +183,27 @@ resource "null_resource" "load-gen" {
 }
 
 
-resource "null_resource" "shell-commands" {
+#resource "null_resource" "shell-commands" {
+#
+#  triggers = {
+#    abc = module.minikube.public_ip
+#  }
+#
+#  provisioner "remote-exec" {
+#    connection {
+#      host = module.minikube.public_ip
+#      user = "centos"
+#      private_key = "~/.ssh/id_rsa"
+#      type = "ssh"
+#    }
+#    inline = [
+#      "cd /etc/yum.repos.d/",
+#      "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*",
+#      "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
+#    ]
+#  }
+#}
 
-  triggers = {
-    abc = module.minikube.public_ip
-  }
-
-  provisioner "remote-exec" {
-    connection {
-      host = module.minikube.public_ip
-      user = "centos"
-      private_key = "~/.ssh/id_rsa"
-      type = "ssh"
-    }
-    inline = [
-      "cd /etc/yum.repos.d/",
-      "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*",
-      "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
-    ]
-  }
-}
-*/
 
 module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
@@ -228,15 +228,9 @@ module "minikube" {
   ]
 }
 
-output "MINIKUBE_SERVER" {
-  value = "ssh centos@${module.minikube.public_ip}"
-}
 
-output "KUBE_CONFIG" {
-  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
-}
 
-/*
+
 module "minikube" {
   source = "github.com/purnavr/terraform-minikube"
 
@@ -268,4 +262,14 @@ output "KUBE_CONFIG" {
   value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
 }
 */
+
+module "eks" {
+  source             = "github.com/r-devops/tf-module-eks"
+  ENV                = var.env
+  PRIVATE_SUBNET_IDS = lookup(local.subnet_ids, "app", null)
+  PUBLIC_SUBNET_IDS  = lookup(local.subnet_ids, "public", null)
+  DESIRED_SIZE       = 1
+  MAX_SIZE           = 1
+  MIN_SIZE           = 1
+}
 

@@ -12,17 +12,17 @@ module "vpc" {
 }
 
 
-output "vpc" {
-  value = module.vpc
-}
-
-#output "alb" {
-#  value = module.alb
+#output "vpc" {
+#  value = module.vpc
 #}
 #
-#output "vpc" {
-#  value = local.db_subnet_ids
-#}
+##output "alb" {
+##  value = module.alb
+##}
+##
+##output "vpc" {
+##  value = local.db_subnet_ids
+##}
 
 
 

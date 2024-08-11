@@ -11,7 +11,7 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 }
 
-/*
+
 output "vpc" {
   value = module.vpc
 }
@@ -95,6 +95,7 @@ module "rabbitmq" {
   allow_subnets = lookup(local.subnet_cidr, each.value["allow_subnets"], null)
 }
 
+/*
 module "alb" {
   source = "git::https://github.com/purnavr/tf-module-alb.git"
   env = var.env

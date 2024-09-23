@@ -141,7 +141,7 @@ module "app" {
   listener_priority = each.value["listener_priority"]
   parameters = each.value["parameters"]
 }
-
+*/
 
 ### Load Runner
 resource "aws_spot_instance_request" "load-runner" {
@@ -183,7 +183,7 @@ resource "null_resource" "load-gen" {
   }
 }
 
-
+/*
 #resource "null_resource" "shell-commands" {
 #
 #  triggers = {

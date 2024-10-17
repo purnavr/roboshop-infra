@@ -2,7 +2,8 @@ env = "prod"
 #bastion_cidr = "172.31.93.12/32"
 bastion_cidr = "172.31.84.140/32"
 monitoring_nodes = "172.31.41.182/32"
-dns_domain = "roboz.online"
+#dns_domain = "roboz.online"
+dns_domain = "roboz.in.net"
 
 vpc = {
   main = {

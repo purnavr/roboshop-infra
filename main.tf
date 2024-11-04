@@ -267,7 +267,7 @@ output "KUBE_CONFIG" {
 */
 
 module "eks" {
-  source             = "github.com/r-devops/tf-module-eks"
+  source             = "github.com/r-devops/eks-module-tf"
   ENV                = var.env
   PRIVATE_SUBNET_IDS = lookup(local.subnet_ids, "app", null)
   PUBLIC_SUBNET_IDS  = lookup(local.subnet_ids, "public", null)

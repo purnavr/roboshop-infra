@@ -143,7 +143,7 @@ module "app" {
 }
 */
 
-/*
+
 ### Load Runner
 resource "aws_spot_instance_request" "load-runner" {
   ami           = data.aws_ami.ami.id
@@ -183,7 +183,7 @@ resource "null_resource" "load-gen" {
     ]
   }
 }
-*/
+
 
 /*
 #resource "null_resource" "shell-commands" {
